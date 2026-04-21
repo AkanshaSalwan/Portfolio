@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 }
 
 const stats = [
-  { label: "Years Experience", value: "2+", icon: Briefcase },
+  { label: "Years Experience", value: "1+", icon: Briefcase },
   { label: "Projects Completed", value: "10+", icon: Code },
   { label: "Performance Boost", value: "80%", icon: Award },
   { label: "Education", value: "B.Tech", icon: GraduationCap },
@@ -24,7 +24,7 @@ function HighlightedText({ children }: { children: string }) {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   // Check if any highlight word is in the text
-  let parts: (string | JSX.Element)[] = [children];
+  let parts: (string | React.ReactElement)[] = [children];
   
   highlightWords.forEach((word) => {
     parts = parts.flatMap((part) => {
@@ -78,10 +78,11 @@ function CountUpStat({ value, label, icon: Icon, index }: { value: string; label
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const numericValue = parseInt(value.replace(/\D/g, ""));
+  const isNumericValue = !Number.isNaN(numericValue);
   const suffix = value.replace(/\d/g, "");
 
   useEffect(() => {
-    if (!isInView || !ref.current) return;
+    if (!isInView || !ref.current || !isNumericValue) return;
 
     const valueEl = ref.current.querySelector(".stat-value");
     if (!valueEl) return;
@@ -101,7 +102,7 @@ function CountUpStat({ value, label, icon: Icon, index }: { value: string; label
         },
       }
     );
-  }, [isInView, numericValue, suffix, index]);
+  }, [isInView, isNumericValue, numericValue, suffix, index]);
 
   return (
     <motion.div

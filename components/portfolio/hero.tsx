@@ -3,11 +3,13 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import Image from "next/image";
 import { Github, Linkedin, Mail, MapPin, ChevronDown } from "lucide-react";
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const imageCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!heroRef.current || !textRef.current) return;
@@ -27,6 +29,39 @@ export function Hero() {
           from: "random",
         },
       });
+
+      if (imageCardRef.current) {
+        gsap.fromTo(
+          imageCardRef.current,
+          { opacity: 0, y: 40, scale: 0.92, rotateY: -8 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            rotateY: 0,
+            duration: 1,
+            delay: 0.35,
+            ease: "power3.out",
+          }
+        );
+
+        gsap.to(imageCardRef.current, {
+          y: -10,
+          duration: 3,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+
+        gsap.to(".hero-photo-glow", {
+          opacity: 0.65,
+          scale: 1.08,
+          duration: 2.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -170,64 +205,30 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right side - Code snippet decoration */}
+          {/* Right side - Profile photo */}
           <motion.div
             variants={itemVariants}
             className="hidden lg:block relative"
           >
-            <div className="relative bg-card rounded-2xl border border-border p-6 shadow-2xl shadow-black/20">
-              {/* Window controls */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="ml-4 text-xs text-muted-foreground font-mono">developer.tsx</span>
+            <div ref={imageCardRef} className="relative mx-auto w-full max-w-[300px] xl:max-w-[340px] [perspective:1000px] lg:ml-auto">
+              <div className="hero-photo-glow absolute -inset-6 rounded-full bg-gradient-to-r from-primary/30 via-cyan-400/10 to-primary/20 blur-2xl opacity-40" />
+              <div className="relative rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+                <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.2),transparent_45%)] pointer-events-none" />
+                <div className="relative aspect-square overflow-hidden rounded-full border border-white/10">
+                  <Image
+                    src="/my img.png"
+                    alt="Akansha Salwan portrait"
+                    fill
+                    sizes="(min-width: 1024px) 420px, 0px"
+                    className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
+                    priority
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                </div>
+                <div className="pointer-events-none absolute top-5 left-10 h-1.5 w-16 rounded-full bg-white/30" />
               </div>
-              
-              {/* Code content */}
-              <pre className="text-sm font-mono leading-relaxed overflow-hidden">
-                <code>
-                  <span className="text-muted-foreground">{"// "}</span>
-                  <span className="text-primary/60">Building the future</span>
-                  {"\n\n"}
-                  <span className="text-primary">const</span>
-                  <span className="text-foreground"> developer</span>
-                  <span className="text-muted-foreground"> = </span>
-                  <span className="text-primary">{"{"}</span>
-                  {"\n"}
-                  <span className="text-muted-foreground">{"  name: "}</span>
-                  <span className="text-green-400">{'"Akansha Salwan"'}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-muted-foreground">{"  role: "}</span>
-                  <span className="text-green-400">{'"Frontend Developer"'}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-muted-foreground">{"  skills: "}</span>
-                  <span className="text-primary">[</span>
-                  {"\n"}
-                  <span className="text-green-400">{"    'React.js'"}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-green-400">{"    'Next.js'"}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-green-400">{"    'Tailwind CSS'"}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-primary">{"  ]"}</span>
-                  <span className="text-muted-foreground">,</span>
-                  {"\n"}
-                  <span className="text-muted-foreground">{"  passion: "}</span>
-                  <span className="text-green-400">{'"Creating experiences"'}</span>
-                  {"\n"}
-                  <span className="text-primary">{"}"}</span>
-                  <span className="text-muted-foreground">;</span>
-                </code>
-              </pre>
-
-              {/* Glow effect */}
-              <div className="absolute -inset-px bg-gradient-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity -z-10 blur-xl" />
+              <div className="pointer-events-none absolute -right-4 top-8 h-12 w-12 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md" />
+              <div className="pointer-events-none absolute -left-4 bottom-10 h-10 w-10 rounded-full border border-cyan-300/40 bg-cyan-400/10" />
             </div>
           </motion.div>
         </motion.div>

@@ -28,9 +28,9 @@ const skillCategories = [
   {
     title: "Backend & Database",
     skills: [
-      { name: "Node.js", level: 80 },
+      { name: "Node.js", level: 50 },
       { name: "MongoDB", level: 78 },
-      { name: "Express.js", level: 75 },
+      { name: "Express.js", level: 40 },
     ],
   },
   {

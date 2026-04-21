@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
+import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
@@ -24,7 +25,7 @@ const projects = [
       "MongoDB Atlas for storage and Cloudinary for images",
     ],
     links: {
-      demo: "#",
+      demo: "https://care-now-4a8b.vercel.app/",
       github: "#",
     },
     featured: true,
@@ -44,7 +45,7 @@ const projects = [
       "User feedback system integration",
     ],
     links: {
-      demo: "#",
+      demo: "https://fresh-mart-xi.vercel.app/",
       github: "#",
     },
     featured: true,
@@ -124,13 +125,25 @@ export function Projects() {
               >
                 <div className="aspect-video bg-card border border-border rounded-2xl overflow-hidden">
                   <div className="project-image w-full h-full bg-gradient-to-br from-primary/20 via-secondary to-primary/10 flex items-center justify-center">
-                    {/* Placeholder with project initials */}
-                    <div className="text-6xl font-bold text-primary/30">
-                      {project.title
-                        .split(" ")
-                        .map((w) => w[0])
-                        .join("")}
-                    </div>
+                    {project.title === "CareNow" ? (
+                      <div className="relative w-full h-full bg-card p-2">
+                        <Image
+                          src="/carenow.png"
+                          alt="CareNow project preview"
+                          fill
+                          sizes="(min-width: 1024px) 560px, 100vw"
+                          className="object-contain object-center rounded-xl"
+                        />
+                      </div>
+                    ) : (
+                      /* Placeholder with project initials */
+                      <div className="text-6xl font-bold text-primary/30">
+                        {project.title
+                          .split(" ")
+                          .map((w) => w[0])
+                          .join("")}
+                      </div>
+                    )}
                   </div>
                 </div>
                 
@@ -186,6 +199,8 @@ export function Projects() {
                 <div className="flex items-center gap-4 pt-2">
                   <a
                     href={project.links.demo}
+                    target={project.title === "CareNow" ? "_blank" : undefined}
+                    rel={project.title === "CareNow" ? "noopener noreferrer" : undefined}
                     className="group inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all"
                   >
                     <ExternalLink size={16} />
