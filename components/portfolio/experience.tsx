@@ -15,7 +15,7 @@ const experiences = [
     companyDescription: "EdTech Platform",
     location: "Hyderabad, Telangana",
     type: "On-site",
-    period: "July 2025 – Present",
+    period: "July 2025 – March 2026",
     highlights: [
       "Developed and maintained scalable web applications using Next.js and React.js for internal EdTech platforms",
       "Designed and implemented features for Student Management, Tutor Management, Sales Management, and Operations Management modules",

@@ -9,9 +9,9 @@ import { Preloader } from "@/components/portfolio/preloader";
 import { Navigation } from "@/components/portfolio/navigation";
 import { Hero } from "@/components/portfolio/hero";
 import { About } from "@/components/portfolio/about";
-import { Experience } from "@/components/portfolio/experience";
-import { Projects } from "@/components/portfolio/projects";
 import { Skills } from "@/components/portfolio/skills";
+import { Projects } from "@/components/portfolio/projects";
+import { Experience } from "@/components/portfolio/experience";
 import { Contact } from "@/components/portfolio/contact";
 import { Footer } from "@/components/portfolio/footer";
 import { CursorEffect } from "@/components/portfolio/cursor-effect";
@@ -101,14 +101,14 @@ export default function PortfolioPage() {
           {/* About Section */}
           <About />
 
-          {/* Experience Section */}
-          <Experience />
+          {/* Skills Section */}
+          <Skills />
 
           {/* Projects Section */}
           <Projects />
 
-          {/* Skills Section */}
-          <Skills />
+          {/* Experience Section */}
+          <Experience />
 
           {/* Contact Section */}
           <Contact />

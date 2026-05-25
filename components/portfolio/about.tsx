@@ -306,28 +306,6 @@ export function About() {
               ))}
             </div>
           </div>
-
-          {/* Scroll-triggered quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center pt-8"
-          >
-            <motion.blockquote 
-              className="relative max-w-2xl mx-auto"
-              whileInView={{ scale: [0.95, 1] }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="absolute -top-4 -left-2 text-6xl text-primary/20 font-serif">&ldquo;</span>
-              <p className="text-xl text-muted-foreground italic px-8">
-                Code is poetry written in logic. Every line tells a story of{" "}
-                <span className="text-primary font-medium">problem-solving</span> and{" "}
-                <span className="text-primary font-medium">creativity</span>.
-              </p>
-              <span className="absolute -bottom-8 -right-2 text-6xl text-primary/20 font-serif">&rdquo;</span>
-            </motion.blockquote>
-          </motion.div>
         </motion.div>
       </div>
     </section>
