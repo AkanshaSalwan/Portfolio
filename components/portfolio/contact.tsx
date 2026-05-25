@@ -29,7 +29,7 @@ const socialLinks = [
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/AkanshaSalwan",
   },
   {
     icon: Linkedin,

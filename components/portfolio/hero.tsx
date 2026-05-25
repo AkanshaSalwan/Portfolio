@@ -185,7 +185,7 @@ export function Hero() {
                 <Mail size={18} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/AkanshaSalwan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground font-medium rounded-lg hover:bg-secondary/80 transition-all duration-300 border border-border"
