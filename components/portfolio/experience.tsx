@@ -44,6 +44,28 @@ const experiences = [
     ],
     technologies: ["React.js", "JavaScript", "HTML5", "CSS3", "Git", "REST APIs"],
   },
+  {
+    title: "Logistics Operations",
+    company: "Flipkart Minutes",
+    companyDescription: "Quick Commerce",
+    location: "Hyderabad, Telangana",
+    type: "On-site",
+    period: "June 2026 – Sept 2026",
+    highlights: [
+      "Managed daily operational workflows, demonstrating strong problem-solving and process management skills",
+      "Prepared and analyzed Root Cause Analysis (RCA) reports to investigate issues and support effective resolutions",
+      "Monitored hourly performance reports and operational dashboards, ensuring data accuracy and performance tracking",
+      "Analyzed customer complaints, order discrepancies, and operational issues to identify root causes and support process improvements",
+      "Coordinated with cross-functional teams to resolve issues, manage order reconciliation, and maintain smooth operational workflows",
+    ],
+    technologies: [
+      "RCA",
+      "Operational Dashboards",
+      "Data Analysis",
+      "Order Reconciliation",
+      "Cross-functional Coordination",
+    ],
+  },
 ];
 
 export function Experience() {

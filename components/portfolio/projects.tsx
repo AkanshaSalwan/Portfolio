@@ -9,13 +9,50 @@ import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
+type Project = {
+  title: string;
+  subtitle: string;
+  description: string;
+  image?: string;
+  technologies: string[];
+  highlights: string[];
+  links: { demo: string; github: string };
+  featured: boolean;
+};
+
+const projects: Project[] = [
+  {
+    title: "AI Interview Labs",
+    subtitle: "AI Voice Interview Platform",
+    description:
+      "A full-stack platform where an AI voice agent runs live interviews for recruiters and practice sessions for candidates. Recruiters create interviews with AI-generated questions, invite candidates, and review AI-generated feedback and scores, while candidates practice and track their progress over time.",
+    image: "/ai-interview-labs.png",
+    technologies: [
+      "Next.js",
+      "React",
+      "Supabase",
+      "Vapi",
+      "OpenAI/OpenRouter",
+      "Tailwind CSS",
+    ],
+    highlights: [
+      "Separate recruiter and candidate workflows with role-based access and Supabase row-level security",
+      "LLM-generated interview questions and post-interview feedback (scores, strengths, improvements)",
+      "Voice agent that never leaks answers, gives 5 minutes of think time, handles early exits and ends the call itself",
+      "Candidate invites with deadlines, candidate comparison, hiring pipeline and practice-progress tracking",
+    ],
+    links: {
+      demo: "https://ai-interview-labs.vercel.app/",
+      github: "#",
+    },
+    featured: true,
+  },
   {
     title: "CareNow",
     subtitle: "Doctor Appointment Booking Platform",
     description:
       "A full-stack doctor appointment platform with patient authentication, doctor discovery by specialty, and real-time slot-based booking. Features Admin and Doctor dashboards with role-based access control.",
-    image: "/projects/carenow.jpg",
+    image: "/carenow.png",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
     highlights: [
       "Patient authentication and doctor discovery by specialty",
@@ -35,7 +72,6 @@ const projects = [
     subtitle: "E-Grocery Store",
     description:
       "A full-stack e-grocery store with a clean UI and responsive design. Features robust routing, payment gateway integration, and an admin panel for managing inventory and orders.",
-    image: "/projects/freshmart.jpg",
     technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
     highlights: [
       "Clean, responsive UI design",
@@ -125,11 +161,11 @@ export function Projects() {
               >
                 <div className="aspect-video bg-card border border-border rounded-2xl overflow-hidden">
                   <div className="project-image w-full h-full bg-gradient-to-br from-primary/20 via-secondary to-primary/10 flex items-center justify-center">
-                    {project.title === "CareNow" ? (
+                    {project.image ? (
                       <div className="relative w-full h-full bg-card p-2">
                         <Image
-                          src="/carenow.png"
-                          alt="CareNow project preview"
+                          src={project.image}
+                          alt={`${project.title} project preview`}
                           fill
                           sizes="(min-width: 1024px) 560px, 100vw"
                           className="object-contain object-center rounded-xl"
@@ -199,8 +235,8 @@ export function Projects() {
                 <div className="flex items-center gap-4 pt-2">
                   <a
                     href={project.links.demo}
-                    target={project.title === "CareNow" ? "_blank" : undefined}
-                    rel={project.title === "CareNow" ? "noopener noreferrer" : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all"
                   >
                     <ExternalLink size={16} />
